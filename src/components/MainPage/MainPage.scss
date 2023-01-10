@@ -1,0 +1,103 @@
+@import '../../assets/scss/_mixins.scss';
+
+.banner {
+    width: 100%; 
+    margin-bottom: 60px;
+    background-color: var(--color-green);
+    @include font(30, 500, 36);
+    color: var(--color-white);
+
+    @at-root &__container {
+        max-width: 1024px;
+        height: calc(100vh - 2 * 80px);
+        margin: 0 auto;
+        @include flex(space-between, center);
+        gap: 40px;
+    }
+    
+
+    @at-root &__info {
+        flex: 1;
+    }
+
+    @at-root &__img {
+        flex: 1;
+
+        @include flex(center, center);
+    }
+
+    @at-root &__img-img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        box-shadow: 7px 15px 46px rgba(0, 0, 0, 0.25);
+    }
+
+    @at-root &__arrow {
+        width: 100%;
+        height: 80px;
+        background-color: var(--color-green);
+        @include flex(center, flex-start);
+    }
+}
+
+.about {
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 60px;
+
+    &__gallery {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(150px, calc((1024px - 3 * 40px) / 4)));
+        grid-template-rows: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    &__text {
+        grid-column: 1/3;
+        align-self: center;
+        @include font(24, 500, 28);
+    }
+
+    &__img-img {
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    &__img-double {
+        grid-column: 3/5;
+        object-fit: cover;
+        overflow: hidden;
+    }
+}
+
+.for-download {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 1em;
+    margin-bottom: 60px;
+
+    @at-root &__tiles {
+        width: 100%;
+        @include flex(space-between, stretch);
+        gap: 40px;
+    }
+
+    @at-root &__tile {
+        flex: 0 1 25%;
+    }
+
+    @at-root &__img {
+        width: 100%;
+        padding: 20px;
+        box-shadow: 7px 15px 46px rgba(0, 0, 0, 0.25);
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+}
