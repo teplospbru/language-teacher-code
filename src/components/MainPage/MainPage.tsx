@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainPage.scss';
 import '../../assets/svg/arrow-down.svg';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export const MainPage = () => {
     return (
@@ -15,17 +16,17 @@ export const MainPage = () => {
                         <img src={ require('../../assets/img/Фефилова.png') } alt="фото Фефиловой" className='banner__img-img' />
                     </div>
                 </div>
-                <div className='banner__arrow'>
+                <Link to="about"  smooth duration={500} className='banner__arrow' href='#about'>
                     <div className='icon'>
                         <svg className="icon" aria-hidden="true">
                             <use xlinkHref="#arrow-down"></use>
                         </svg>
                     </div>
-                </div>
+                </Link>
             </section>
 
             <section className='about'>
-                <h2>Обо Мне</h2>
+                <h2 id='about'>Обо Мне</h2>
                 <div className='about__gallery'>
                     <div className='about__text'>
                         Я учитель английского языка высшей категории со стажем работы 13 лет. Имею успешный опыт исследовательской работы с учениками и подготовки их к ОГЭ. Но больше всего мне нравится работать с малышами начальной школы.
@@ -50,7 +51,7 @@ export const MainPage = () => {
             </section>
 
             <section className='for-download'>
-                <h2>Учителям</h2>
+                <h2 id='for-teacher'>Учителям</h2>
 
                 <div className='for-download__tiles'>
                     <div className='for-download__tile'>
@@ -85,7 +86,38 @@ export const MainPage = () => {
             </section>
 
             <section className='for-download'>
-                <h2>Родителям</h2>
+                <h2 id='for-parent'>Родителям</h2>
+
+                <div className='for-download__tiles'>
+                    <div className='for-download__tile'>
+                        <div className='for-download__img'>
+                            <img src={ require('../../assets/img/карандаши.png') } className="for-download__img-img" alt="" />
+                        </div>
+                        Инновационный проект «Научное общество обучающихся»
+                        <a href='#' className='for-download__button'>Скачать</a>
+                    </div>
+                    <div className='for-download__tile'>
+                        <div className='for-download__img'>
+                            <img src={ require('../../assets/img/карандаши.png') } className="for-download__img-img" alt="" />
+                        </div>
+                        Инновационный проект «Научное общество обучающихся»
+                        <a href='#' className='for-download__button'>Скачать</a>
+                    </div>
+                    <div className='for-download__tile'>
+                        <div className='for-download__img'>
+                            <img src={ require('../../assets/img/карандаши.png') } className="for-download__img-img" alt="" />
+                        </div>
+                        Инновационный проект «Научное общество обучающихся»
+                        <a href='#' className='for-download__button'>Скачать</a>
+                    </div>
+                    <div className='for-download__tile'>
+                        <div className='for-download__img'>
+                            <img src={ require('../../assets/img/карандаши.png') } className="for-download__img-img" alt="" />
+                        </div>
+                        Инновационный проект «Научное общество обучающихся»
+                        <a href='#' className='for-download__button'>Скачать</a>
+                    </div>
+                </div>
             </section>
         </>
     )
