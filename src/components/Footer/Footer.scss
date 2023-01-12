@@ -11,11 +11,16 @@
 
     @at-root &__container {
         max-width: 1024px;
+        width: 90%;
         margin: 0 auto;
         height: 100%;
 
         @include flex(space-between, center);
         gap: 40px;
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+        }
     }
 
     @at-root &__info {
@@ -23,14 +28,37 @@
         
         @include flex(space-between, center);
         gap: 40px;
+
+        @media (max-width: 800px) {
+            // justify-self: flex-start;
+            align-self: stretch;
+        }
+
+        @media (max-width: 450px) {
+            flex-direction: column;
+        }
     }
 
     @at-root &__logo {
         flex: 0 1 calc(50% - 20px);
+
+        @media (max-width: 800px) {
+            flex: 0;
+            justify-self: flex-start;
+            align-self: flex-start;
+        }
     }
 
     @at-root &__contacts {
         flex: 0 1 calc(50% - 20px);
+
+        @media (max-width: 800px) {
+            flex: auto;
+        }
+
+        @media (max-width: 450px) {
+            align-self: flex-start;
+        }
     }
 
     @at-root &__disclaimer {

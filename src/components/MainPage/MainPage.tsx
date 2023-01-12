@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { RefObject, useEffect, useRef } from 'react';
 import './MainPage.scss';
 import '../../assets/svg/arrow-down.svg';
 import { Link, animateScroll as scroll } from "react-scroll";
+import { useLocation } from 'react-router-dom';
 
 export const MainPage = () => {
+    const aboutRef = useRef<null | HTMLDivElement>(null);
+    const forTeacherRef = useRef<null | HTMLDivElement>(null);
+    const forParentRef = useRef<null | HTMLDivElement>(null);
+    const link = useLocation();
+
+    const scrollTo = (ref: RefObject<null | HTMLDivElement>) => {
+        if(ref.current) {
+            ref.current.scrollIntoView({ behavior: "smooth" })
+        }
+    } 
+
+    useEffect(() => {
+        if(link.hash === '#about') {
+            scrollTo(aboutRef)
+        };
+        if(link.hash === '#for-teacher') {
+            scrollTo(forTeacherRef)
+        };
+        if(link.hash === '#for-parent') {
+            scrollTo(forParentRef)
+        };
+    }, [link]);
+
     return (
         <>
             <section className='banner'>
@@ -26,7 +50,7 @@ export const MainPage = () => {
             </section>
 
             <section className='about'>
-                <h2 id='about'>Обо Мне</h2>
+                <h2 id='about' ref={ aboutRef }>Обо Мне</h2>
                 <div className='about__gallery'>
                     <div className='about__text'>
                         Я учитель английского языка высшей категории со стажем работы 13 лет. Имею успешный опыт исследовательской работы с учениками и подготовки их к ОГЭ. Но больше всего мне нравится работать с малышами начальной школы.
@@ -51,7 +75,7 @@ export const MainPage = () => {
             </section>
 
             <section className='for-download'>
-                <h2 id='for-teacher'>Учителям</h2>
+                <h2 id='for-teacher' ref={ forTeacherRef }>Учителям</h2>
 
                 <div className='for-download__tiles'>
                     <div className='for-download__tile'>
@@ -86,7 +110,7 @@ export const MainPage = () => {
             </section>
 
             <section className='for-download'>
-                <h2 id='for-parent'>Родителям</h2>
+                <h2 id='for-parent'  ref={ forParentRef }>Родителям</h2>
 
                 <div className='for-download__tiles'>
                     <div className='for-download__tile'>

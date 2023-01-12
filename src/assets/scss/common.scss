@@ -31,12 +31,21 @@ h1 {
     @include font(60, 500, 75);
     color: var(--color-white);
     margin-bottom: 0.5em;
+
+    @media (max-width: 800px) {
+        @include font(40, 500, 50);
+    }
 }
 
 h2 {
     margin-bottom: 0.5em;
     @include font(40, 600, 50);
     color: var(--color-black);
+}
+
+p {
+    @include font(18, 500, 21);
+    margin-bottom: 0.75em;
 }
 
 .icon {
