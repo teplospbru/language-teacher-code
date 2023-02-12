@@ -1,11 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const mode = process.env.NODE_ENV || 'production';
+
 module.exports = {
-  mode: 'development',
+  mode,
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.[contenthash].js',
   },
   module: {
@@ -17,14 +20,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.svg$/,
         use: ['svg-sprite-loader', 'svg-transform-loader', 'svgo-loader'],
       },
       {
-        test: /\.(png|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        test: /\.(png|jpg|gif|woff(2)?|eot|ttf|otf|doc|docx)$/,
         type: 'asset/resource',
       },
       {
@@ -37,6 +40,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
+  optimization: {
+    runtimeChunk: mode === 'production' ? false : 'single',
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
